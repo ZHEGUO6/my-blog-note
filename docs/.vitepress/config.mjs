@@ -35,7 +35,7 @@ export default defineConfigWithTheme({
         },
         nav: [
             {
-                text: '笔记拓展',
+                text: '拓展',
                 link: '/notes/'
             },
             {
