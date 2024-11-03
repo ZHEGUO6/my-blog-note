@@ -1,5 +1,3 @@
-import {defineConfig} from 'vitepress'
-import {set_sidebar} from "./utils/auto_sidebar.js";
 // 1. 导入 defineConfigWithTheme 函数
 import { defineConfigWithTheme } from 'vitepress'
 // 2. 导入需要继承的配置对象
@@ -44,7 +42,7 @@ export default defineConfigWithTheme({
             },
             {
                 text: '我的项目', items: [
-                    {text: '开心聊天室', link: 'http://47.97.85.85:81'}
+                    {text: '我的生活博客', link: 'https://z-my-life.netlify.app/'}
                 ]
             }
         ],

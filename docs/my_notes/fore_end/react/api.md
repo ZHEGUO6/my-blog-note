@@ -1166,6 +1166,46 @@ function Input() {
 }
 ```
 
+## useImperativeHandle的使用
+
+useImperativeHandle 是 React Hooks 中的一个 Hook，用于自定义你在父组件中通过 ref 暴露给子组件的实例值。这在你需要从父组件直接调用子组件中的方法或访问其属性时非常有用。可以使用useImperativeHandle自定义子组件的方法集合，定制化函数开发效率更高。🤺🤺
+
+```jsx
+import {forwardRef, useImperativeHandle, useRef} from "react";
+
+const MyInput = forwardRef(function MyInput(props, ref) {
+    const inputRef = useRef();
+    useImperativeHandle(ref, () => {
+        return {
+            focus: () => {
+                inputRef.current.focus();
+            },
+            focusRed: () => {
+                inputRef.current.style.background = "red";
+            }
+        }
+    })
+    return <input ref={inputRef}/>;
+})
+
+function App() {
+    const inputRef = useRef();
+    const handleClick = () => {
+        inputRef.current.focus();
+        inputRef.current.focusRed();
+    }
+    return (
+        <div className='App'>
+            <button onClick={handleClick}>click</button>
+
+            <MyInput ref={inputRef}/>
+        </div>
+    )
+}
+
+export default App
+```
+
 
 
 ## `useEffect` 的使用
