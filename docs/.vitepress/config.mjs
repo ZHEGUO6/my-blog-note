@@ -292,6 +292,7 @@ export default defineConfigWithTheme({
                         {text: "Mysql", link: "/my_notes/after_end/Mysql/api"},
                         {text: "Mongodb", link: "/my_notes/after_end/Mongodb/api"},
                         {text: "Graphql", link: "/my_notes/after_end/Graphql/api"},
+                        {text: "Nest.js", link: "/my_notes/after_end/Nest/api"},
                     ]
                 },
                 {

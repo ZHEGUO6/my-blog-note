@@ -26,7 +26,7 @@ cd .\files
 npm run start
 ```
 
-运行成功，在本地3000端口打开一个HTTP服务。http://localhost:3000
+运行成功，在本地3000端口打开一个HTTP服务。`【http://localhost:3000】`
 
 ![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411011457363.png)
 
