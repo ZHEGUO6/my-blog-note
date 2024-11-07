@@ -42,7 +42,9 @@ export default defineConfigWithTheme({
             },
             {
                 text: '我的项目', items: [
-                    {text: '我的生活博客', link: 'https://z-my-life.netlify.app/'}
+                    {text: 'ZBlog技术博客', link: '/project/blog'},
+                    {text: 'Happy聊天室', link: '/project/happy'},
+                    {text: '桌面音乐播放器', link: '/project/music'}
                 ]
             }
         ],

@@ -149,3 +149,225 @@ deleteFish(@Param('id') id:string){
     }
 ```
 
+
+
+## 创建Service服务
+
+1. `nest g s`
+
+2. 输入服务名称，src目录下面会生成一个你刚才命名的文件夹。
+
+3. 例如你创建了一个shark服务。在 **shark.service.ts** 文件里面。
+
+```typescript
+import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {Shark} from "../entities/shark.entities";
+
+@Injectable()
+export class SharkService {
+    // 模拟数据库
+    private sharks: Shark[] = [
+        {
+            id: 1,
+            name: 'Sammy',
+            age: 5,
+            weight: 40,
+            flavor: ['sweet', 'sour']
+        },
+        {
+            id: 2,
+            name: 'Bob',
+            age: 6,
+            weight: 50,
+            flavor: ['sweet']
+        }
+    ];
+
+    // 查询所有数据
+    findAll() {
+        return {
+            code:10000,
+            message:'findAll success',
+            data:this.sharks
+        };
+    }
+
+    // 根据id查询单条数据
+    findOne(id: number) {
+        const shark = this.sharks.find(shark => shark.id === id);
+        if (!shark) {
+            // 抛出异常，添加状态码
+            throw new HttpException(`Shark #${id} not found`, HttpStatus.NOT_FOUND)
+        }
+        return {
+            code:10000,
+            message:'findOne success',
+            data:shark
+        };
+    }
+
+    // 创建数据
+    create(createSharkDto: any) {
+        this.sharks.push(createSharkDto);
+        return {
+            code:10000,
+            message:'success',
+            data:createSharkDto
+        };
+    }
+
+    // 接收一个id，和要更新的数据
+    PatchUpdate(id: number, updateSharkDto: any) {
+        this.sharks.map(item => item.id === id ? updateSharkDto : item);
+        if (this.sharks.filter(item => item.id === id)){
+            return {
+                code:10000,
+                message:'update success',
+                data:updateSharkDto
+            };
+        } else {
+            return {
+                code: 10001,
+                message: 'not found'
+            };
+        }
+    }
+
+    // 接受一个id,删除对应数据
+    remove(id: number) {
+        this.sharks = this.sharks.filter(item => item.id !== id);
+        return {
+            code:10000,
+            message:'remove success'
+        };
+    }
+
+}
+```
+
+4. 几个异常实例
+
+```typescript
+ // 1. 404异常实例，传入一个字符串，包含到message属性里面
+	throw new NotFoundException(`Shark #${id} not found`)
+	示例：
+    {
+    "message": "Shark #3 not found",
+    "error": "Not Found",
+    "statusCode": 404
+	}
+
+// 2. http异常实例，传入一个字符串，和一个状态码
+	// 抛出异常，添加状态码
+	throw new HttpException(`Shark #${id} not found`, HttpStatus.NOT_FOUND)
+	示例：
+    {
+    "statusCode": 404,
+    "message": "Shark #3 not found"
+	}
+
+
+```
+
+## 创建新的Module
+
+命令行：`nest g module [name]`
+
+创建之后会在 **app.module.ts** 文件里面的imports插入你创建的module。
+
+```typescript
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { BeefController } from './beef/beef.controller';
+import { SharkController } from './shark/shark.controller';
+import { BeefService } from './beef/beef.service';
+import { SharkService } from './shark/shark.service';
+import { SharkModule } from './shark/shark.module';
+
+@Module({
+    // 你创建的module
+  imports: [SharkModule],
+    // 你创建的controller
+  controllers: [AppController, BeefController, SharkController],
+   // 你创建的service 
+  providers: [AppService, BeefService, SharkService],
+})
+export class AppModule {}
+
+```
+
+## 创建DTO
+
+**什么是DTO？**
+
+在 Nest.js 中，DTO (Data Transfer Object) 是用于定义和验证数据结构的类。DTO 的主要作用包括：
+
+- 数据验证：确保传入的数据符合预期的格式和类型。
+- 数据转换：可以对传入的数据进行一些预处理或转换。
+- 数据过滤：可以限制客户端只能访问或修改特定的属性。
+
+命令行：`nest g class shark/dto/create-shark.dto --no-spec --flat`
+
+会创建如下图：·
+
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411041717811.png)
+
+安装插件：`npm i class-validator class-transformer`
+
+class-validator：用于数据验证，提供了丰富的装饰器来定义验证规则。
+		class-transformer：用于对象之间的转换，例如将请求体转换为 DTO 类的实例。
+
+**DTO数据验证**
+
+```typescript
+import {IsString,IsNumber} from 'class-validator';
+// 设置类型安全验证 
+export class CreateSharkDto {
+    @IsString()
+    // 必须是字符串
+    readonly name: string;
+    @IsNumber()
+    // 必须是数字
+    readonly age: number;
+    @IsNumber()
+    readonly weight: number;
+    @IsString({each:true})
+    // 必须是字符串类型的数组
+    readonly flavor: string[];
+}
+```
+
+为了避免每给每个接口都复写冗余的验证代码，可以使用**继承机制**。
+
+安装**@nestjs/mapped-types**插件
+
+```typescript
+// update.dto接口继承create.dto接口的验证机制
+
+import {PartialType} from '@nestjs/mapped-types'
+import {CreateSharkDto} from './create-shark.dto'
+export class UpdateSharkDto extends PartialType(CreateSharkDto){}
+```
+
+**ValidationPipe的白名单机制**
+
+```typescript
+// 在main.ts里面
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import {ValidationPipe} from "@nestjs/common";
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe({
+    // 白名单 只会返回DTO里面包含的数据，别的字段会被筛选出去
+    whitelist: true,
+    // 如果请求的字段多余DTO的字段，就会报错，并告诉你多余的字段
+    forbidNonWhitelisted: true
+  }))
+  await app.listen(process.env.PORT ?? 3000);
+}
+bootstrap();
+```
+
