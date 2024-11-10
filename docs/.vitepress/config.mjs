@@ -291,6 +291,8 @@ export default defineConfigWithTheme({
                         {text: "Python", link: "/my_notes/after_end/python/api"},
                         {text: "Java", link: "/my_notes/after_end/Java/api"},
                         {text: "Node.js", link: "/my_notes/after_end/Node/api"},
+                        {text: "Express", link: "/my_notes/after_end/Express/index"},
+                        {text: "Sequelize", link: "/my_notes/after_end/Sequelize/index"},
                         {text: "Mysql", link: "/my_notes/after_end/Mysql/api"},
                         {text: "Mongodb", link: "/my_notes/after_end/Mongodb/api"},
                         {text: "Graphql", link: "/my_notes/after_end/Graphql/api"},

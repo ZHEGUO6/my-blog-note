@@ -10,6 +10,29 @@
 
 ![](.\img\1.png)
 
+
+
+## electron 生命周期
+
+- ready：app初始化完成
+- dom-ready：一个窗口的文本加载完成
+- did-finsh-load：导航完成时触发
+- window-all-closed：所有窗口都被关闭时触发
+- before-quit：在窗口关闭之前触发
+- will-quit：在窗口关闭并且应用退出时触发
+- quit：当所有窗口被关闭时触发
+- closed：当窗口关闭时触发，此时应该删除窗口引用
+
+## 打开一个新窗口
+
+在BroserWindow里面添加webPreferences属性
+
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411080831074.png)
+
+在渲染进程里面引入remote模块
+
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411080835452.png)
+
 ```js
 // 主进程 main.js
 const { app, BrowserWindow ,ipcMain} = require('electron')
@@ -155,3 +178,4 @@ btn2.addEventListener("click", async ()=>{
 3. 安装打包工具： 使用 npm 或 yarn 安装 Electron 打包工具，如 electron-builder。
 
 `npm install  electron-builder`
+
