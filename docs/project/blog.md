@@ -6,19 +6,19 @@
 
 应用了framer motion动画和轮播图，主要介绍了网站功能和我的其它项目。以及相关编程技术的链接，开发者可以通过链接快速访问官网。
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111719333.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111719333.png)
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111719615.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111719615.png)
 
 
 
 ## 网站首页
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111720283.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111720283.png)
 
 侧边栏是网站相关技术博客的分类，点击侧边栏可以跳转对应分类栏目，轮播图可以配置一些我的项目首页图片和跳转链接，也可以配置一些热门博客或者广告。
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111720985.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111720985.png)
 
 中间是一些生活类和技术类文章，点击换一批可以更新文章。
 
@@ -38,7 +38,7 @@
 
 右边是热门文章目录，点击文章可以跳转对应的博客文章。
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111721779.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111721779.png)
 
 
 
@@ -46,7 +46,7 @@
 
 使用`markdown`语法书写文章，右边可以实时显示文章被转化成HTML。点击发布之后还可以上传博客封面。
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111721271.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111721271.png)
 
 
 
@@ -56,7 +56,7 @@
 
 展示对应的消息内容，还显示发送消息的对象和身份。
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111722582.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111722582.png)
 
 
 
@@ -74,7 +74,7 @@
 
 通过输入的关键信息可以查询到对应的文章和用户。
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111724690.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111724690.png)
 
 
 
@@ -92,6 +92,6 @@
 
 注册页面：输入提示信息完成登录。
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111725772.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111725772.png)
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111725116.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111725116.png)
