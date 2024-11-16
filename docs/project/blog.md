@@ -82,7 +82,7 @@
 
 点击首页侧边栏的分类按钮，跳转到对应的栏目，显示该栏目下的博客文章列表。
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111724227.png)
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411111724227.png)
 
 
 
