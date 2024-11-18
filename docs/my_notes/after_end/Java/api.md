@@ -157,3 +157,160 @@ public class demo02 {
     }
 ```
 
+## 运算符
+
+
+
+###  算术运算符
+
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411172340570.png)
+
+```java
+// +符号既可以做加法，也可以做拼接 
+public static void test1() {
+        int a = 10;
+        System.out.println(a + 10); // 20
+        System.out.println(a + "hello"); // 10hello
+        System.out.println("hello" + a); // hello10
+        System.out.println("hello" + "world"); // helloworld
+        System.out.println(a + 'b' + 'a'); // 205
+    }
+```
+
+### 自增自减运算符
+
+自增：++
+
+自减：--
+
+```java
+ public static void test1(int a) {
+        int res = ++a;
+        System.out.println(a); // 11
+        System.out.println(res); // 11
+    }
+
+public static void test2(int a) {
+    int res = a++;
+    System.out.println(a); // 11
+    System.out.println(res); // 10
+}
+```
+
+### 赋值运算符
+
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411180004014.png)
+
+### 逻辑运算符
+
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411180020282.png)
+
+## 案例：健康计算器
+
+```java
+package com.zheguo.bmi;
+
+import java.util.Scanner;
+
+public class demo01 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入身高（单位：米）：");
+        double height = sc.nextDouble();
+        System.out.println("请输入体重（单位：千克）：");
+        double weight = sc.nextDouble();
+        System.out.println("请输入性别（1：男，2：女）：");
+        int sex = sc.nextInt();
+        System.out.println("请输入年龄：");
+        int age = sc.nextInt();
+        double bmi = bmi(height, weight);
+        System.out.println("您的BMI指数为：" + bmi);
+        System.out.println("您的BMI范围是：" + bmiRange(bmi));
+        double bmr = bmr(age, sex, height, weight);
+        System.out.println("您的基础代谢率（BMR）为：" + bmr);
+        System.out.println("您的基础代谢率范围是：" + bmrRange(bmr));
+    }
+
+    // 设计一个程序，计算BMI值，并输出结果。
+    public static double bmi(double height, double weight) {
+        return weight / (height * height);
+    }
+
+    // 根据个人信息，计算用户的BMR指数
+    public static double bmr(int age, int sex, double height, double weight) {
+        double bmr = 0;
+        if (sex == 1) {
+            bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+        } else {
+            bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+        }
+        return bmr;
+    }
+
+    // 设计一个程序，判断用户的BMI值属于什么范围。
+    public static String bmiRange(double bmi) {
+        String range = "";
+        if (bmi < 18.5) {
+            range = "过轻";
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+            range = "正常";
+        } else if (bmi > 24.9 && bmi <= 29.9) {
+            range = "过重";
+        } else {
+            range = "肥胖";
+        }
+        return range;
+    }
+
+    // 设计一个程序，判断用户的基础代谢率属于什么范围
+    public static String bmrRange(double bmr) {
+        String range = "";
+        if (bmr < 1000) {
+            range = "低";
+        } else if (bmr >= 1000 && bmr <= 1500) {
+            range = "中";
+        } else {
+            range = "高";
+        }
+        return range;
+    }
+}
+```
+
+## 程序的三种执行顺序
+
+1. 顺序结构：自上而下的执行顺序。
+2. 分支结构：根据条件，选择对应的代码执行。
+3. 循环结构·：控制某段代码重复的执行。
+
+### 分支结构
+
+if分支，switch分支。
+
+### 循环结构
+
+for循环，while循环，do-while循环，死循环，循环嵌套。
+
+#### **for循环和while循环的差别在哪？**
+
+**使用for循环，前提你要知道循环的次数再使用。while循环，你在不知道要循环多少次，只知道结束循环的条件的情况下使用。**
+
+```java
+public class demo01 {
+    public static void main(String[] args) {
+        // 调用year方法，求出存了10000元，在1.7%利率下，多少年后能实现资金翻倍。
+        System.out.println(year(10000, 1.7));
+    }
+
+    // 假设你在银行中存了10000元，每年给出的利率为1.7%，多少年后能实现资金翻倍。
+    public static int year(double money, double rate) {
+        int year = 0;
+        while (money < 2 * money) {
+            money += money * rate / 100;
+            year++;
+        }
+        return year;
+    }
+}
+```
+
