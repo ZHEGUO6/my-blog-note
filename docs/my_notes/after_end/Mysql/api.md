@@ -19,3 +19,4 @@ DELETE FROM articles WHERE id = 9;
 // 格式：select 列名（*） from 表名 where 条件 order by id desc(倒序) or asc(正序);
 SELECT title,content,id from articles WHERE id=4;
 ```
+<Download address="/pdf/MySQL.pdf" title="点击下载笔记" filename="数据库笔记.pdf"/>
