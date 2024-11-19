@@ -1,4 +1,6 @@
 <script setup>
+import {ElMessage} from "element-plus";
+
 const props = defineProps({
   address: {
     type: String,
@@ -16,6 +18,13 @@ const props = defineProps({
 })
 
 const download = async () => {
+  ElMessage(
+      {
+        message: '文件正在下载中，请稍等',
+        type: 'success',
+        duration: 2000
+      }
+  )
 	try {
 		// 请求/下载文件
 		const res = await fetch(props.address);
@@ -40,7 +49,7 @@ const download = async () => {
 
 <template>
   <div class="link" @click="download()">
-    <p>👀{{title}}</p>
+    <p>{{title}}</p>
   </div>
 </template>
 
@@ -48,13 +57,13 @@ const download = async () => {
 .link{
   cursor: pointer;
   border-radius: 10px;
-  background-color: #46b0da;
+  background-color: #37bb16;
   padding: 3px;
   text-align: center;
 }
 
 .link:hover{
-  background-color: #2e9db8;
+  background-color: #469b02;
 }
 
 p{

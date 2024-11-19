@@ -314,3 +314,39 @@ public class demo01 {
 }
 ```
 
+#### 死循环
+
+**死循环的几种写法：**
+
+<img src="//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411190024403.png" style="zoom:67%;" />
+
+#### 嵌套循环
+
+```java
+// 写一个嵌套循环
+    public static void loop() {
+        for (int i = 1; i <= 9; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("hello world");
+            }
+            System.out.println();//换行
+        }
+    }
+```
+
+**嵌套循环的特点**：外部循环每执行一次，内部循环都会执行一轮。
+
+打印九九乘法表：
+
+```java
+ // 打印一个九九乘法表
+    public static void print() {
+        for (int i = 1; i <= 9; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j + "*" + i + "=" + i * j + "\t");
+            }
+            System.out.println();
+        }
+    }
+```
+
