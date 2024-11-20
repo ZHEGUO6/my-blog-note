@@ -5,11 +5,13 @@ import '@escook/vitepress-theme/style.css'
 import 'element-plus/dist/index.css'
 import './style.css'
 import download from './components/Download.vue'
+import drawer from './components/Drawer.vue'
 // 3. 把“导入”的主题“默认导出”即可
 export default {
     ...Theme,
     enhanceApp({app}) {
         // 4. 配置自定义的组件
         app.component('Download', download)
+        app.component('Drawer', drawer)
     }
 }

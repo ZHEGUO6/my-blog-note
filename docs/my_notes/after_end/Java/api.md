@@ -815,7 +815,7 @@ System.out.println(stu2);
 
 **打印到控制台上的结果：**
 
-![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411201710496.png)
+![结果](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411201710496.png)
 
 打印出来的都是对象存储的地址，并且地址位置相同表示为同一对象。
 
@@ -836,4 +836,51 @@ stu2.favorite("java");
 // 打印结果
 张三喜欢java
 ```
+
+## 封装
+
+面向对象三大特征：封装、继承、多态。‘
+
+为保证对象里面的数据私有化，给每个成员变量前面加上private标识符，并提供Getter和Setter方法。
+
+```java
+package com.zheguo.capsulation;
+
+public class Student {
+    // 成员变量私有化
+    private String name;
+    private int age;
+
+    // 无参构造器
+    public Student() {
+        System.out.println("无参构造器");
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void print() {
+        System.out.println("姓名：" + name + "，年龄：" + age);
+    }
+}
+```
+
+## Javabean
+
+什么是实体类？需要满足以下条件
+
+<Drawer src="https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411201904073.png"/>
 
