@@ -205,7 +205,7 @@ public static void test2(int a) {
 
 ![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411180020282.png)
 
-## 案例：健康计算器
+## 实战案例：健康计算器
 
 ```java
 package com.zheguo.bmi;
@@ -350,3 +350,469 @@ public class demo01 {
     }
 ```
 
+break：跳出并结束当前的循环。
+
+continue：跳出当前循环，直接进入下一次循环。
+
+## 综合实战
+
+### 一、计算器
+
+单值匹配：
+
+```java
+ // 写一个简单计算器的程序，输入两个数字，然后选择加减乘除，最后输出结果。
+    public static void calculator() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入第一个数字：");
+        double num1 = scanner.nextDouble();
+        System.out.println("请输入第二个数字：");
+        double num2 = scanner.nextDouble();
+        System.out.println("请选择运算符（+、-、*、/）：");
+        String operator = scanner.next();
+        double result = 0;
+        switch (operator) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                result = num1 / num2;
+                break;
+            default:
+                System.out.println("输入的运算符有误！");
+        }
+        System.out.println("计算结果为：" + result);
+    }
+```
+
+### 二、猜数字
+
+多值匹配：
+
+```java
+ // 写一个猜数字的游戏，用户输入一个数字，计算机随机生成一个数字，然后判断用户输入的数字是否等于计算机生成的数字，如果等于，则提示用户猜对了，否则提示用户猜的大还是小。
+    public static void guessNumber() {
+        Scanner scanner = new Scanner(System.in);
+        int number = (int) (Math.random() * 100 + 1);
+       do {
+           System.out.println("请输入一个数字：");
+           int input = scanner.nextInt();
+           if (input == number) {
+               System.out.println("恭喜你，猜对了！");
+               break;
+           } else if (input > number) {
+               System.out.println("你猜的数字太大了，请再试一次：");
+           } else {
+               System.out.println("你猜的数字太小了，请再试一次：");
+           }
+       } while (true);
+    }
+```
+
+### 三、随机生成验证码
+
+```java
+   // 写一条随机生成验证码的程序
+    public static void generateVerificationCode(int n) {
+        String code = "";
+        for (int i = 0; i < n; i++) {
+            int type = (int) (Math.random() * 3); // 0 1 2表示不同类型的字符
+            switch (type) {
+                case 0:
+                    int num = (int) (Math.random() * 10); // 生成0-9之间的数字
+                    code += num;
+                    break;
+                case 1:
+                    char ch = (char) (Math.random() * 26 + 'a'); // 生成a-z之间的字母
+                    code += ch;
+                    break;
+                case 2:
+                    char CH = (char) (Math.random() * 26 + 'A'); // 生成A-Z之间的字母
+                    code += CH;
+                    break;
+                default:
+                    System.out.println("生成验证码时发生错误！");
+            }
+        }
+        System.out.println("生成的验证码为：" + code);
+    }
+```
+
+### 四、找素数
+
+```java
+package com.zheguo.circulate;
+
+public class demo02 {
+    public static void main(String[] args) {
+        // 找到100-200之间的素数
+        for (int i = 100; i <= 200; i++) {
+            // 判断是否是素数
+            if (isPrime(i)) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    // 方法功能：判断一个数是否是素数
+    public static boolean isPrime(int num){
+        if (num < 2) {
+            return false;
+        }
+
+        for (int i = 2; i < Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+## 数组
+
+数组是一个容器，批量存储同类型的数据。
+
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411191354765.png)
+
+### 动态初始化数组
+
+```java
+package com.zheguo.arry;
+
+import java.util.Scanner;
+
+public class demo01 {
+    public static void main(String[] args) {
+        inputScore();
+    }
+
+    // 设计一个方法，录入8名学生的成绩
+    public static void inputScore() {
+        // 需要一个数组来动态接收8个学生成绩
+        double[] arr = new double[8];
+        // 这时数组的的状态 [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println("请输入第" + (i + 1) + "个学生的成绩");
+            arr[i] = scanner.nextDouble();
+        }
+
+        // 统计总分
+        double sum = 0;
+        for (double v : arr) {
+            sum += v;
+        }
+        // 输出平均分
+        System.out.println("平均分是：" + (sum / arr.length));
+        System.out.println("最高分是：" + max(arr));
+        System.out.println("最低分是：" + min(arr));
+        System.out.println("总分是：" + sum);
+
+    }
+
+    // 需求：定义一个方法，用来统计数组的最大值
+    public static double max(double[] arr) {
+        double max = arr[0];
+        for (double v : arr) {
+            if (max < v) {
+                max = v;
+            }
+        }
+        return max;
+    }
+
+    // 需求：定义一个方法，用来统计数组的最小值
+    public static double min(double[] arr) {
+        double min = arr[0];
+        for (double v : arr) {
+            if (min > v) {
+                min = v;
+            }
+        }
+        return min;
+    }
+}
+```
+
+### 斗地主做牌和洗牌
+
+```java
+package com.zheguo.arry;
+
+public class poker {
+    public static void main(String[] args) {
+        getPokers();
+    }
+
+    // 写一个斗地主程序，只写做牌和洗牌
+    public static void getPokers() {
+        // 创建一个数组，用来存储54张牌
+        String[] pokers = new String[54];
+        // 定义花色和牌面
+        String[] colors = {"♠", "♥", "♣", "♦"};
+        // 定义牌面点数
+        String[] nums = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < colors.length; j++) {
+                pokers[index++] = colors[j] + nums[i];
+            }
+        }
+
+        pokers[index++] = "小王";
+        pokers[index] = "大王";
+
+        System.out.println("----------洗牌----------");
+
+        // 随机洗牌
+        // 如何实现洗牌？ 随机生成两个0-53 之间的数，然后交换位置，循环54次
+        for (int i = 0; i < pokers.length; i++) {
+            int index1 = (int) (Math.random() * pokers.length);
+            int index2 = (int) (Math.random() * pokers.length);
+            String temp = pokers[index1];
+            pokers[index1] = pokers[index2];
+            pokers[index2] = temp;
+        }
+
+         // 把牌打印出来
+        for (String poker : pokers) {
+            System.out.println(poker + " ");
+        }
+    }
+}
+```
+
+## 二维数组
+
+**二维数组：数组里面的每个元素都是一个数组。**
+
+```java
+package com.zheguo.arry;
+
+public class Array2D {
+    public static void main(String[] args) {
+        // 写一个姓名的二维数组
+        // 静态初始化
+        String[][] names = {
+                {"张三", "李四"},
+                {"王五", "赵六" , "钱九"},
+                {"孙七", "周八"}
+        };
+
+        // 打印到屏幕上
+        for (int i = 0; i < names.length; i++) {
+            for (int j = 0; j < names[i].length; j++) {
+                System.out.print(names[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+## 实战案例：数字华容道
+
+```java
+package com.zheguo.arry;
+
+public class demo02 {
+    public static void main(String[] args) {
+        huarongdao(4);
+    }
+
+    // 写一个数字华容道的方法
+    public static void huarongdao(int num) {
+        // 1. 创建一个二维数组，用来模拟华容道
+        int[][] arr = new int[num][num];
+        // 2. 填充数组
+        int count = 1;
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < num; j++) {
+                arr[i][j] = count++;
+            }
+        }
+
+        //  输出数组
+        printArray(arr);
+        System.out.println("======================");
+
+        // 3. 随机交换数组中的元素
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < num; j++) {
+                int row = (int) (Math.random() * num);
+                int col = (int) (Math.random() * num);
+                int temp = arr[row][col];
+                arr[row][col] = arr[i][j];
+                arr[i][j] = temp;
+            }
+        }
+        printArray(arr);
+    }
+
+    // 方法：打印二维数组
+    public static void printArray(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+打乱一个不对称的数组
+
+```java
+// 打乱一个不对称二维数组
+    public static void test() {
+        // 1. 创建一个姓名二维数组，每个元素长度不相等、姓名不重复
+        String[][] names = {
+                {"张三", "李四"},
+                {"王五", "赵六", "钱九"},
+                {"孙七", "周八"}
+        };
+        // 输出
+        printArrayString(names);
+        // 2. 给一个每个元素长度都不相等的二维数组打乱顺序
+        for (int i = 0; i < names.length; i++) {
+            for (int j = 0; j < names[i].length; j++) {
+                int col = (int) (Math.random() * names[i].length);
+                String temp = names[i][col];
+                names[i][col] = names[i][j];
+                names[i][j] = temp;
+            }
+        }
+        // 输出
+        printArrayString(names);
+    }
+
+    public static void printArrayString(String[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+```
+
+## 面向对象编程
+
+什么是对象？
+
+对象是一种特殊的数据结构，可以用来记住一个事物的数据，从而代表该数据。
+
+### 声明一个明星类
+
+```java
+public class Star {
+    // 声明一个明星对象
+    String name;
+    String sex;
+    int age;
+    String phone;
+    String address;
+
+    // 重写toString方法
+    @Override
+    public String toString()
+    {
+        return "Star [name=" + name + ", sex=" + sex + ", age=" + age + ", phone=" + phone + ", address=" + address
+            + "]";
+    }
+}
+```
+
+### 在主函数实例化这个类
+
+```java
+ // 创建Star对象实例
+        Star star1 = new Star();
+        star1.name = "王宝强";
+        star1.sex = "男";
+        star1.age = 35;
+        star1.phone = "13888888888";
+        star1.address = "北京";
+        // 打印对象具体信息
+        System.out.println(star1.toString());
+```
+
+### 类的基本语法
+
+#### 构造器
+
+创建对象时，对象自动调用构造器。
+
+创建学生类：
+
+```java
+package com.zheguo.oop;
+
+public class Student {
+    String name;
+    int age;
+
+    // 无参构造器
+    public Student() {
+        System.out.println("无参构造器");
+    }
+
+    // 有参构造器
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+        System.out.println("有参构造器");
+    }
+}
+```
+
+调用构造器：
+
+```java
+// 创建对象，无参数，调用无参构造器
+Student stu1 = new Student();
+// 有参数，调用有参构造器
+Student stu2 = new Student("张三", 18);
+```
+
+构造器的常见应用场景：创建对象，同时完成对对象成员变量（属性）初始化赋值。
+
+注意事项：
+
+- 类默认带了一个无参构造器
+- 如果定义了一个有参构造器，那么默认的无参构造器就没有了，想用就得自己再写一个。
+
+### this关键字
+
+this是一个变量，可以用在方法中，指的是当前对象。
+
+举个例子：
+
+```java
+//定义一个print方法，打印this
+public void print() {
+    // this代表当前对象
+    // 那个对象调用print方法，this就是那个对象
+    System.out.println(this);
+}
+```
+
+```java
+// 打印的是对象存储在堆中的地址值
+stu2.print();
+// 直接打印对象，调用的是toString方法
+System.out.println(stu2);
+```
+
+**打印到控制台上的结果：**
+
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411201710496.png)
