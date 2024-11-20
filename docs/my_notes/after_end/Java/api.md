@@ -318,7 +318,7 @@ public class demo01 {
 
 **死循环的几种写法：**
 
-<img src="//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411190024403.png" style="zoom:67%;" />
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411190024403.png)
 
 #### 嵌套循环
 
@@ -815,4 +815,25 @@ System.out.println(stu2);
 
 **打印到控制台上的结果：**
 
-![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411201710496.png)
+![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411201710496.png)
+
+打印出来的都是对象存储的地址，并且地址位置相同表示为同一对象。
+
+**this关键字的应用场景：**解决变量名称冲突问题。
+
+例如：
+
+```java
+public void favorite(String name) {
+    // 有了this,形参就不会跟成员变量的名称冲突了
+    System.out.println(this.name + "喜欢" + name);
+}
+
+// 调用方法
+Student stu2 = new Student("张三", 18);
+stu2.favorite("java");
+
+// 打印结果
+张三喜欢java
+```
+
