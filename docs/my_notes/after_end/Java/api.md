@@ -882,5 +882,5 @@ public class Student {
 
 什么是实体类？需要满足以下条件
 
-<Drawer src="https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411201904073.png"/>
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411201904073.png)
 
