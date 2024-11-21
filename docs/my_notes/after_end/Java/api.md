@@ -1029,4 +1029,7 @@ public static void main(String[] args) {
 
 注意事项：
 
-![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411210938173.png)
+![](https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411210938173.png)
+
+## 综合小项目
+
