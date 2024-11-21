@@ -884,3 +884,149 @@ public class Student {
 
 ![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411201904073.png)
 
+代码的分层思想：
+
+先封装一个实体类，用于读写学生的成绩信息
+
+```java
+package com.zheguo.operator;
+
+public class Student {
+    private String name;
+    private double Chinese;
+    private double Math;
+
+    // 无参构造器
+    public Student() {
+
+    }
+
+    // 有参构造器
+    public Student(String name, double c, double m) {
+        this.name = name;
+        this.Chinese = c;
+        this.Math = m;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getChinese() {
+        return Chinese;
+    }
+
+    public void setChinese(double chinese) {
+        Chinese = chinese;
+    }
+
+    public double getMath() {
+        return Math;
+    }
+
+    public void setMath(double math) {
+        Math = math;
+    }
+}
+```
+再定义一个管理类用于存放业务逻辑代码：
+```java
+package com.zheguo.operator;
+
+public class Operator {
+    private Student s;
+
+    public Operator(Student s) {
+        this.s = s;
+    }
+
+    // 计算学生的总分
+    public String total() {
+        return "学生" + this.s.getName() + "的总分为" + (this.s.getChinese() + this.s.getMath());
+    }
+
+    // 计算学生的平均分
+    public String average() {
+        return "学生" + this.s.getName() + "的平均分为" + (this.s.getChinese() + this.s.getMath()) / 2;
+    }
+}
+```
+
+在主函数调用方法：
+
+```java
+public static void main(String[] args) {
+    Student student = new Student("张三", 90, 80);
+    Operator operator = new Operator(student);
+    System.out.println(operator.total());
+    System.out.println(operator.average());
+}
+```
+
+## static 静态
+
+static叫静态，可以修饰成员变量，成员方法。
+
+成员变量按照有无static修饰，分为两种：
+
+- 静态变量（类变量）：有static修饰，这计算机里只有一份，会被类的的全部对象共享。
+- 实例变量（对象的变量）：无static修饰，属于每个对象的。
+
+```java
+static double english;
+```
+
+```java
+Student student = new Student("张三", 90, 80);
+// 类变量可以拿类名访问，实例变量只能通过实例名访问
+Student.english = 60;
+```
+
+### 静态变量的应用场景
+
+- 如果某个数据只要一份，且希望能够被共享（访问，修改），则该数据可以定义成成员变量来记住。
+
+案例导学：
+
+- 系统启动后，要求用户类可以记住自己创建了多少个用户对象。
+
+```java
+public class User {
+    static int count = 0;
+
+    public User(){
+        // 每创建一个对象，就加一
+        count++;
+    
+}
+```
+
+```java
+public static void main(String[] args) {
+    new User();
+    new User();
+    new User();
+    System.out.println(User.count);// 3
+}
+```
+
+静态方法使用和静态变量大体相同。在做功能性方法，不需要使用对象内的实例变量时，可以加上static。
+
+**静态方法应用场景**：封装工具类
+
+### 为什么工具类中的方法要使用静态方法，而不用实例方法？
+
+- 实例方法需要创建对象实例来调用，此时调用对象只是为了调用方法，对象占用内存，这样会浪费内存。
+- 静态方法，直接用类名调用即可，调用方便，也能节省内存。
+
+**多学一招：**
+
+**工具类没有创建对象的需求，建议将工具类的构造器进行私有，防止别人实例化工具类。**
+
+注意事项：
+
+![](//images.weserv.nl/?url=https://cdn.jsdelivr.net/gh/ZHEGUO6/image/img/202411210938173.png)
