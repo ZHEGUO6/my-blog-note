@@ -1,11 +1,11 @@
 // 1. 导入 defineConfigWithTheme 函数
-import { defineConfigWithTheme } from 'vitepress'
+import {defineConfigWithTheme} from 'vitepress'
 // 2. 导入需要继承的配置对象
 import escookConfig from '@escook/vitepress-theme/config'
 // https://vitepress.dev/reference/site-config
 export default defineConfigWithTheme({
     // 通过 extends 指定要继承的配置
-    extends:escookConfig,
+    extends: escookConfig,
     head: [["link", {rel: "icon", href: "/themeIcon.png"}]],
     title: "折果的个人知识库",
     description: "A VitePress Site",
@@ -16,20 +16,20 @@ export default defineConfigWithTheme({
         outline: [2, 6],
         // 4. 通过此配置项，启用背景音乐的小组件
         musicBall: {
-           list:[
-               {
-                   name: '知我 -国风棠（哦屚）',
-                   src: '/audio/knowme.mp3'
-               },
-               {
-                   name: 'See you again -查理·普斯 ',
-                   src: '/audio/Seeyouagain.mp3'
-               },
-               {
-                   name: '普通朋友 -陶喆',
-                   src: '/audio/friend.mp3'
-               }
-           ]
+            list: [
+                {
+                    name: '知我 -国风棠（哦屚）',
+                    src: '/audio/knowme.mp3'
+                },
+                {
+                    name: 'See you again -查理·普斯 ',
+                    src: '/audio/Seeyouagain.mp3'
+                },
+                {
+                    name: '普通朋友 -陶喆',
+                    src: '/audio/friend.mp3'
+                }
+            ]
         },
         nav: [
             {
@@ -269,10 +269,12 @@ export default defineConfigWithTheme({
                         {text: "CSS", link: "/my_notes/fore_end/CSS/api"},
                         {text: "JavaScript", link: "/my_notes/fore_end/Javascript/api"},
                         {text: "Promise", link: "/my_notes/fore_end/promise/api"},
-                        {text: "TypeScript",items:[
-                            {text: "黑马", link: "/my_notes/fore_end/typescript/api1"},
-                            {text: "超哥", link: "/my_notes/fore_end/typescript/api2"},
-                            ]},
+                        {
+                            text: "TypeScript", items: [
+                                {text: "黑马", link: "/my_notes/fore_end/typescript/api1"},
+                                {text: "超哥", link: "/my_notes/fore_end/typescript/api2"},
+                            ]
+                        },
                         {text: "Three.js", link: "/my_notes/fore_end/three/api"},
                         {text: "Vue", link: "/my_notes/fore_end/vue/api"},
                         {text: "React", link: "/my_notes/fore_end/react/api"},
@@ -300,10 +302,19 @@ export default defineConfigWithTheme({
                     ]
                 },
                 {
-                    text:'经验总结',
+                    text: '经验总结',
                     collapsed: false,
-                    items:[
-                        {text:'前端',link:'/my_notes/fore_end/important/api'}
+                    items: [
+                        {text: '前端', link: '/my_notes/fore_end/important/api'}
+                    ]
+                },
+                {
+                    text: "面试八股文",
+                    collapsed: false,
+                    items: [
+                        {
+                            text: '前端面试八股文',link:'/my_notes/minashi8/qianduan/index'
+                        }
                     ]
                 }
             ]
@@ -346,9 +357,9 @@ export default defineConfigWithTheme({
             },
         },
     },
-    vite:{
-        ssr:{
-            noExternal: ['@escook/vitepress-theme','vitepress']
+    vite: {
+        ssr: {
+            noExternal: ['@escook/vitepress-theme', 'vitepress']
         }
     }
 })
