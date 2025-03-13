@@ -299,6 +299,7 @@ export default defineConfigWithTheme({
                         {text: "Mongodb", link: "/my_notes/after_end/Mongodb/api"},
                         {text: "Graphql", link: "/my_notes/after_end/Graphql/api"},
                         {text: "Nest.js", link: "/my_notes/after_end/Nest/api"},
+                        {text: "SpringBoot", link: "/my_notes/after_end/SpringBoot/index"},
                     ]
                 },
                 {
